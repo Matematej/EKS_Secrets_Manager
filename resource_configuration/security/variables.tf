@@ -1,5 +1,6 @@
-variable "api_username" {
-  description = "API service username"
+/*variable "API_Token" {
+  description = "API Token "
   type        = string
+  default = ""
   sensitive   = true
-}
+}*/

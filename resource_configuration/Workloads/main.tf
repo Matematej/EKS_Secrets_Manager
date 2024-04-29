@@ -19,3 +19,7 @@ provider "aws" {
 module "landing_zone" {
   source = "../landing_zone"
 }
+
+module "security" {
+  source = "../security"
+}

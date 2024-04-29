@@ -9,7 +9,13 @@ resource "aws_secretsmanager_secret" "My_Secret" {
 }
 
  # Manage Secret value
-resource "aws_secretsmanager_secret_version" "service_user" {
+resource "aws_secretsmanager_secret_version" "API_Token" {
   secret_id     = aws_secretsmanager_secret.My_Secret.id
-  secret_string = var.api_username
+  secret_string = random_string.random.result
+}
+
+resource "random_string" "random" {
+  length           = 16
+  special          = true
+  override_special = "/@£$"
 }

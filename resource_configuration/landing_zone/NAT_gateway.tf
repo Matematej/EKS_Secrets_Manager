@@ -1,7 +1,7 @@
 resource "aws_eip" "nat" {
 
   tags = {
-    Project     = "EKS_Terraform_Project",
+    Project     = "EKS_Secrets_Manager",
     Environment = "Dev"
   }
 }
@@ -11,7 +11,7 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = aws_subnet.public-us-east-1a.id
 
   tags = {
-    Project     = "EKS_Terraform_Project",
+    Project     = "EKS_Secrets_Manager",
     Environment = "Dev"
   }
 }

@@ -20,7 +20,7 @@ module "landing_zone" {
   source = "./resource_configuration/landing_zone"
 }
 
-module "Secret" {
-  source = "./resource_configuration/secret"
-  api_username = var.api_username
+module "security" {
+  source = "./resource_configuration/security"
+  # api_username = var.api_username
 }

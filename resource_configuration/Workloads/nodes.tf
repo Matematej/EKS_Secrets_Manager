@@ -1,24 +1,24 @@
-resource "aws_eks_node_group" "general" {
-  cluster_name    = aws_eks_cluster.my_cluster.name
-  node_group_name = "general"
-
+resource "aws_eks_node_group" "MyNode_Group" {
+  cluster_name    = aws_eks_cluster.MyCluster.name
+  node_group_name = "My_Node_Group"
   node_role_arn = aws_iam_role.eks_node_role.arn
-  subnet_ids    = ["subnet-12345678", "subnet-87654321"]
+
+  subnet_ids = [
+    module.landing_zone.private-us-east-1a,
+    module.landing_zone.private-us-east-1b
+  ]
 
   scaling_config {
     desired_size = 1
     min_size     = 1
-    max_size     = 10
+    max_size     = 4
   }
-
+  
   instance_types = ["t3.small"]
 
-  remote_access {
-    ec2_ssh_key = "your_ssh_key_name"
-  }
-
   tags = {
-    Role = "general"
+    Project     = "EKS_Secrets_Manager",
+    Environment = "Dev"
   }
 }
 
@@ -36,4 +36,9 @@ resource "aws_iam_role" "eks_node_role" {
       }
     ]
   })
+
+  tags = {
+    Project     = "EKS_Secrets_Manager",
+    Environment = "Dev"
+  }
 }
