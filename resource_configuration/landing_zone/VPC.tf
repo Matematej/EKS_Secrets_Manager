@@ -14,9 +14,12 @@ resource "aws_subnet" "private-us-east-1a" {
 
   tags = {
     Project     = "EKS_Secrets_Manager",
-    Environment = "Dev"
+    Environment = "Dev",
+    Name                            = "private-us-east-1a",
+    "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/MyCluster"      = "owned"
   }
-}
+  }
 
 resource "aws_subnet" "private-us-east-1b" {
   vpc_id            = aws_vpc.main.id
@@ -25,7 +28,10 @@ resource "aws_subnet" "private-us-east-1b" {
 
   tags = {
     Project     = "EKS_Secrets_Manager",
-    Environment = "Dev"
+    Environment = "Dev",
+    Name                            = "private-us-east-1b",
+    "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/MyCluster"      = "owned"
   }
 }
 
@@ -38,7 +44,10 @@ resource "aws_subnet" "public-us-east-1a" {
 
   tags = {
     Project     = "EKS_Secrets_Manager",
-    Environment = "Dev"
+    Environment = "Dev",
+    Name                            = "public-us-east-1a",
+#    "kubernetes.io/role/internal-elb" = "1"
+#    "kubernetes.io/cluster/MyCluster"      = "owned"
   }
 }
 
@@ -50,7 +59,10 @@ resource "aws_subnet" "public-us-east-1b" {
 
   tags = {
     Project     = "EKS_Secrets_Manager",
-    Environment = "Dev"
+    Environment = "Dev",
+    Name                            = "public-us-east-1b",
+#    "kubernetes.io/role/internal-elb" = "1"
+#    "kubernetes.io/cluster/MyCluster"      = "owned"
   }
 }
 

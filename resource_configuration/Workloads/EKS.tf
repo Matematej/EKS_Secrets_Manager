@@ -39,3 +39,9 @@ POLICY
     Environment = "Dev"
   }
 }
+
+ # This AWS Managed policy provides Kubernetes the permissions it requires to manage resources on your behalf.
+resource "aws_iam_role_policy_attachment" "MyCluster-AmazonEKSClusterPolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  role       = aws_iam_role.eks_cluster_role.name
+}
