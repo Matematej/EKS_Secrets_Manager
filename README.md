@@ -15,7 +15,11 @@
         - The DaemonSet deploys the Secrets Store CSI Provider on each node.
         - The Secrets Store CSI Provider ensures the functionality of the CSI Driver.
         - The CSI Driver mounts the secrets from AWS Secrets Manager to individual pods as files.
-    
-I have changed prod/service/token to My_Secret
+        - Secrets are exposed as Environment Variables (in k8s/application_pods/deployment.yaml)
 
-Maybe there will be a problem with referencing secret insted of secrets manager
+## How to run
+
+1. aws eks update-kubeconfig --region us-east-1 --name MyCluster
+2. kubectl apply -f k8s/application_pods
+3. kubectl apply -f k8s/secrets_store_csi_driver
+4. kubectl apply -f k8s/AWS_SCP
